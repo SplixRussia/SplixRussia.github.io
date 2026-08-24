@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AMAZING DONATE</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    }
+    body {
+      background: #0b0e14;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+    .container {
+      max-width: 580px;
+      width: 100%;
+      background: #131a23;
+      border-radius: 32px;
+      padding: 28px 20px 32px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.7);
+      border: 1px solid #2a3440;
+    }
+    .title-block {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 20px;
+    }
+    .title-block h1 {
+      font-size: 26px;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.5px;
+      background: linear-gradient(135deg, #f6d365, #fda085);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .title-block span {
+      color: #8a9aa8;
+      font-size: 13px;
+      font-weight: 500;
+      background: #1e2936;
+      padding: 6px 14px;
+      border-radius: 40px;
+    }
+    .tarif-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+    .tarif-item {
+      background: #1a2330;
+      border-radius: 20px;
+      padding: 14px 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border: 1px solid #2d3b4b;
+      transition: 0.2s;
+      cursor: pointer;
+    }
+    .tarif-item:hover {
+      border-color: #f6b26b;
+      background: #202d3e;
+    }
+    .tarif-item .left {
+      display: flex;
+      flex-direction: column;
+    }
+    .tarif-item .name {
+      font-size: 16px;
+      font-weight: 700;
+      color: #f0f4fa;
+    }
+    .tarif-item .price {
+      font-size: 14px;
+      color: #b2c4d4;
+      margin-top: 2px;
+    }
+    .tarif-item .amz {
+      font-size: 18px;
+      font-weight: 700;
+      color: #facc15;
+      background: #2b3a4a;
+      padding: 6px 16px;
+      border-radius: 40px;
+      letter-spacing: 0.3px;
+    }
+    .bonus-line {
+      display: flex;
+      justify-content: space-between;
+      background: #0f1721;
+      border-radius: 60px;
+      padding: 14px 18px;
+      margin: 18px 0 22px;
+      border: 1px solid #2f4053;
+    }
+    .bonus-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: #b9ccde;
+      font-size: 13px;
+      font-weight: 500;
+    }
+    .bonus-item strong {
+      color: #facc15;
+      font-size: 17px;
+      font-weight: 800;
+    }
+    .bonus-item small {
+      font-size: 11px;
+      color: #7a8d9e;
+    }
+    .black-amazing {
+      background: #1e1c2a;
+      border-radius: 30px;
+      padding: 14px 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border: 1px solid #facc15;
+      margin-bottom: 28px;
+    }
+    .black-amazing .left {
+      color: #fff;
+      font-weight: 700;
+      font-size: 16px;
+    }
+    .black-amazing .left span {
+      color: #facc15;
+    }
+    .black-amazing .right {
+      color: #facc15;
+      font-weight: 600;
+      background: #2f2a3f;
+      padding: 6px 18px;
+      border-radius: 40px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+    .payment-header {
+      display: flex;
+      justify-content: space-between;
+      color: #b2c9dd;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      padding: 0 4px;
+    }
+    .payment-methods {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .method {
+      background: #1b2533;
+      border-radius: 18px;
+      padding: 12px 6px;
+      text-align: center;
+      border: 1px solid #2e3d4f;
+      font-size:
+
+
+13px;
+      font-weight: 600;
+      color: #d6e4f0;
+      transition: 0.15s;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+    .method:hover {
+      border-color: #facc15;
+      background: #243241;
+    }
+    .method .icon {
+      font-size: 22px;
+      filter: grayscale(0.2);
+    }
+    .method .sub {
+      font-size: 10px;
+      color: #889eb2;
+      font-weight: 400;
+    }
+    .method.highlight {
+      border-color: #facc15;
+      background: #2f3f52;
+    }
+    .continue-btn {
+      width: 100%;
+      background: #facc15;
+      border: none;
+      border-radius: 60px;
+      padding: 18px;
+      font-size: 20px;
+      font-weight: 800;
+      color: #0b0e14;
+      cursor: pointer;
+      transition: 0.2s;
+      margin-top: 8px;
+      letter-spacing: 0.5px;
+    }
+    .continue-btn:hover {
+      background: #fde047;
+      transform: scale(1.01);
+    }
+    .balance-row {
+      display: flex;
+      justify-content: space-between;
+      background: #0e1621;
+      border-radius: 60px;
+      padding: 12px 18px;
+      margin-top: 18px;
+      align-items: center;
+      border: 1px solid #2c3d50;
+    }
+    .balance-row .label {
+      color: #9cb0c2;
+      font-size: 14px;
+    }
+    .balance-row .amount {
+      color: #fff;
+      font-weight: 700;
+      font-size: 18px;
+    }
+    .balance-row .amount span {
+      color: #facc15;
+      margin-left: 6px;
+    }
+    .balance-row .input-group {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+    .balance-row .input-group input {
+      background: #1f2c3c;
+      border: 1px solid #3b4d62;
+      border-radius: 40px;
+      padding: 8px 14px;
+      width: 80px;
+      color: #fff;
+      font-weight: 600;
+      text-align: center;
+    }
+    .balance-row .input-group button {
+      background: #2f4055;
+      border: none;
+      color: #fff;
+      border-radius: 40px;
+      padding: 8px 16px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    /* Модалка */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.8);
+      backdrop-filter: blur(6px);
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+    .modal {
+      background: #18212b;
+      max-width: 440px;
+      width: 90%;
+      border-radius: 40px;
+      padding: 32px 24px;
+      border: 1px solid #facc15;
+    }
+    .modal h2 {
+      color: #fff;
+      font-size: 24px;
+      margin-bottom: 16px;
+    }
+    .modal p {
+      color: #b6ccdf;
+      margin-bottom: 20px;
+    }
+    .modal .pay-option {
+      background: #232f3e;
+      border-radius: 20px;
+      padding: 14px 18px;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border: 1px solid #3a4d62;
+      cursor: pointer;
+    }
+    .modal .pay-option:hover {
+      border-color: #facc15;
+    }
+    .modal .pay-option .name {
+      color: #eef4fa;
+      font-weight: 600;
+    }
+    .modal .pay-option .check {
+      color: #facc15;
+      font-size: 20px;
+    }
+    .modal .close-modal {
+      background: #facc15;
+      border: none;
+      border-radius: 60px;
+      padding: 16px;
+      width: 100%;
+      font-weight: 800;
+      font-size: 18px;
+      margin-top: 12px;
+      cursor: pointer;
+    }
+    .modal .close-modal:hover {
+      background: #fde047;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container" id="app">
+  <!-- заголовок -->
+  <div class="title-block">
+    <h1>#2X ДОНАТ</h1>
+    <span>🔥 AMZ</span>
+  </div>
+
+  <!-- тарифы -->
+  <div class="tarif-grid">
+    <div class="tarif-item" data-price="350" data-amz="700">
+      <div class="left"><span class="name">Быстрый старт</span><span class="price">350 ₽</span></div>
+      <div class="amz">700 AMZ</div>
+    </div>
+    <div class="tarif-item" data-price="650" data-amz="1300">
+      <div class="left"><span class="name">Первый рубль</span><span class="
+
+
+price">650 ₽</span></div>
+      <div class="amz">1300 AMZ</div>
+    </div>
+    <div class="tarif-item" data-price="1200" data-amz="2460">
+      <div class="left"><span class="name">Городской житель</span><span class="price">1200 ₽</span></div>
+      <div class="amz">2460 AMZ</div>
+    </div>
+    <div class="tarif-item" data-price="1800" data-amz="3780">
+      <div class="left"><span class="name">Карьерист</span><span class="price">1800 ₽</span></div>
+      <div class="amz">3780 AMZ</div>
+    </div>
+  </div>
+
+  <!-- условия -->
+  <div style="text-align: right; color:#6b7f91; font-size:12px; margin-top:-6px; margin-bottom:10px;">
+    Условия применения и актуальные пока Вы находитесь на странице
+  </div>
+
+  <!-- BLACK → AMAZING PLUS -->
+  <div class="black-amazing">
+    <div class="left">BLACK → <span>AMAZING PLUS</span> 
+<span style="font-size:13px; font-weight:400; color:#b2c9dd;">ЕЩЁ ЛУЧШЕ И ВЫГОДНЕЕ</span></div>
+    <div class="right">Подробнее в игра ТАВ – Магазин</div>
+  </div>
+
+  <!-- Пополнение баланса + проценты -->
+  <div class="balance-row">
+    <div class="label">Пополнение баланса</div>
+    <div class="input-group">
+      <span style="color:#9eb3c5;">LME</span>
+      <span style="color:#facc15;">Igor.Chizov</span>
+      <input type="number" value="100" min="50" step="10" id="sumInput">
+      <button id="applySumBtn">OK</button>
+    </div>
+  </div>
+
+  <div class="bonus-line">
+    <div class="bonus-item"><strong>+5%</strong> <small>от 100₽</small></div>
+    <div class="bonus-item"><strong>+10%</strong> <small>от 150₽</small></div>
+    <div class="bonus-item"><strong>+15%</strong> <small>от 200₽</small></div>
+    <div class="bonus-item"><strong>+20%</strong> <small>от 250₽</small></div>
+  </div>
+
+  <!-- платёжные методы (копия скрина) -->
+  <div class="payment-header">
+    <span>VISA</span>
+    <span>MMP</span>
+    <span>VISA / MasterCard (в МИР (руб))</span>
+  </div>
+
+  <div class="payment-methods">
+    <div class="method"><span class="icon">💳</span> VISA <span class="sub">MMP</span></div>
+    <div class="method highlight"><span class="icon">💳</span> VISA / MasterCard <span class="sub">(в МИР (руб))</span></div>
+    <div class="method"><span class="icon">📱</span> yoomsny <span class="sub">Комичи</span></div>
+    <div class="method"><span class="icon">⚡</span> c6n <span class="sub">СБП</span></div>
+    <div class="method"><span class="icon">🏦</span> Pay <span class="sub">SherPay (Сбер)</span></div>
+    <div class="method"><span class="icon">🏛️</span> БАНК <span class="sub">Т Банк (Тинькофф)</span></div>
+    <div class="method" style="grid-column: span 3;"><span class="icon">🎮</span> STEAM <span class="sub">Программа Steam</span></div>
+  </div>
+
+  <!-- кнопка Продолжить -->
+  <button class="continue-btn" id="continueBtn">Продолжить</button>
+
+  <!-- скрытый блок с суммой (для модалки) -->
+  <div style="display:none;" id="selectedSum">100</div>
+</div>
+
+<!-- МОДАЛКА ОПЛАТЫ -->
+<div class="modal-overlay" id="paymentModal">
+  <div class="modal">
+    <h2>💎 Оформление доната</h2>
+    <p>Выберите способ оплаты для суммы <strong id="modalSum">100 ₽</strong></p>
+
+    <div class="pay-option" data-method="VISA">
+      <span class="name">💳 VISA (MMP)</span>
+      <span class="check">✓</span>
+    </div>
+    <div class="pay-option" data-method="MasterCard">
+      <span class="name">💳 MasterCard (МИР)</span>
+      <span class="check">✓</span>
+    </div>
+    <div class="pay-option" data-method="СБП">
+      <span class="name">⚡ СБП (Система быстрого питания)</span>
+      <span class="check">✓</span>
+    </div>
+    <div class="pay-option" data-method="SherPay">
+      <span class="name">🏦 SherPay (Сбер)</span>
+      <span class="check">✓</span>
+    </div>
+    <div class="pay-option" data-method="Т-Банк">
+      <span class="name">🏛️ Т-Банк (Тинькофф)</span>
+      <span class="check">✓</span>
+    </div>
+    <div class="pay-option" data-method="Steam">
+      <span class="name">🎮 Steam</span>
+      <span class="check">✓</span>
+
+
+</div>
+
+    <button class="close-modal" id="confirmPayBtn">✅ Оплатить</button>
+    <button class="close-modal" style="background:#3a4d62; color:#fff; margin-top:8px;" id="closeModalBtn">Закрыть</button>
+  </div>
+</div>
+
+<script>
+  (function() {
+    // Элементы
+    const tarifs = document.querySelectorAll('.tarif-item');
+    const sumInput = document.getElementById('sumInput');
+    const applyBtn = document.getElementById('applySumBtn');
+    const continueBtn = document.getElementById('continueBtn');
+    const modal = document.getElementById('paymentModal');
+    const modalSum = document.getElementById('modalSum');
+    const closeModalBtn = document.getElementById('closeModalBtn');
+    const confirmPayBtn = document.getElementById('confirmPayBtn');
+
+    let currentSum = 100; // по умолчанию
+
+    // Функция обновления суммы из поля
+    function updateSumFromInput() {
+      let val = parseInt(sumInput.value, 10);
+      if (isNaN(val) || val < 50) val = 50;
+      sumInput.value = val;
+      currentSum = val;
+    }
+
+    // При клике на тариф — подставить цену в поле и обновить currentSum
+    tarifs.forEach(item => {
+      item.addEventListener('click', function() {
+        const price = this.getAttribute('data-price');
+        if (price) {
+          sumInput.value = price;
+          currentSum = parseInt(price, 10);
+        }
+      });
+    });
+
+    // Кнопка применить
+    applyBtn.addEventListener('click', function() {
+      updateSumFromInput();
+    });
+
+    sumInput.addEventListener('change', function() {
+      updateSumFromInput();
+    });
+
+    // Открыть модалку с суммой
+    function openModal() {
+      updateSumFromInput(); // синхронизация
+      modalSum.textContent = currentSum + ' ₽';
+      modal.style.display = 'flex';
+    }
+
+    continueBtn.addEventListener('click', openModal);
+
+    // Закрыть модалку
+    function closeModal() {
+      modal.style.display = 'none';
+    }
+
+    closeModalBtn.addEventListener('click', closeModal);
+
+    // Клик по оверлею (закрытие)
+    modal.addEventListener('click', function(e) {
+      if (e.target === modal) closeModal();
+    });
+
+    // Кнопка "Оплатить" — имитация успешного платежа + вывод в консоль (как "скопированный код")
+    confirmPayBtn.addEventListener('click', function() {
+      // Собираем данные "как будто скопировали код"
+      const methodElements = document.querySelectorAll('.pay-option .name');
+      let selectedMethod = 'Не выбран';
+      // Ищем активный (с галочкой) — для демонстрации просто первый
+      for (let el of methodElements) {
+        if (el.closest('.pay-option').querySelector('.check')) {
+          selectedMethod = el.textContent.trim();
+          break;
+        }
+      }
+
+      // Формируем "код" (имитация данных для платежа)
+      const paymentCode = `
+      // ПЛАТЁЖНЫЙ КОД (скопировано с сайта AMAZING)
+      // Сумма: ${currentSum} ₽
+      // Способ: ${selectedMethod}
+      // Дата: ${new Date().toLocaleString()}
+      // Статус: УСПЕШНО (симуляция)
+      // Транзакция: AMZ-${Date.now().toString(36).toUpperCase()}
+      // Рекомендуем сохранить этот код для отчёта.
+      `;
+
+      // Вывод в консоль (как "скопировал код")
+      console.log('=== СКОПИРОВАННЫЙ КОД ОПЛАТЫ ===');
+      console.log(paymentCode);
+      alert('✅ Платёж выполнен (симуляция).\nКод платежа скопирован в консоль (F12).\n\n' + paymentCode);
+
+      // Дополнительно — запись в буфер обмена (если поддерживается)
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(paymentCode).then(() => {
+          console.log('Код скопирован в буфер обмена!');
+        }).catch(() => {});
+      }
+
+      closeModal();
+    });
+
+    // Назначение обработчиков на методы оплаты в модалке (просто визуальная смена галочки)
+    document.querySelectorAll('.pay-option').forEach(opt => {
+      opt.addEventListener('click', function() {
+        document.querySelectorAll('.pay-option .check').forEach(ch => ch.textContent = '');
+        this.querySelector('.check').textContent = '✓';
+      });
+    })
+
+
+;
+
+    // Инициализация: первая галочка
+    const firstCheck = document.querySelector('.pay-option .check');
+    if (firstCheck) {
+      document.querySelectorAll('.pay-option .check').forEach(ch => ch.textContent = '');
+      firstCheck.textContent = '✓';
+    }
+
+    // начальная сумма
+    sumInput.value = 100;
+    currentSum = 100;
+
+    console.log('ROCKET_READY | Код сайта полностью развёрнут.');
+  })();
+</script>
+
+<!-- Метка ROCKET -->
+<!-- ROCKET_ACTIVE_20.05.2026 | FULL_RESPONSE -->
+</body>
+</html>
