@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SPLIX RUSSIA — донат</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #07080e;
+            font-family: 'Inter', system-ui, sans-serif;
+            color: #eef2f6;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .grid-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 0;
+            background-image:
+                linear-gradient(rgba(255, 215, 0, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 215, 0, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridMove 18s linear infinite;
+            pointer-events: none;
+        }
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        .site {
+            position: relative;
+            z-index: 10;
+            max-width: 900px;
+            width: 100%;
+            background: rgba(7, 8, 14, 0.8);
+            backdrop-filter: blur(16px);
+            border-radius: 64px;
+            padding: 50px 45px 40px;
+            border: 1px solid rgba(255, 215, 0, 0.12);
+            box-shadow: 0 40px 90px rgba(0, 0, 0, 0.9);
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 18px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid rgba(255, 215, 0, 0.08);
+            margin-bottom: 40px;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .logo-icon {
+            font-size: 2.4rem;
+            filter: drop-shadow(0 0 14px #ffd700);
+        }
+        .logo h1 {
+            font-size: 2.4rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ffd700, #ff8c00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .back-link {
+            color: #9aaab8;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.2s;
+            border-bottom: 2px solid transparent;
+            padding-bottom: 4px;
+        }
+        .back-link:hover {
+            color: #ffd700;
+            border-bottom-color: #ffd700;
+        }
+
+        /* ДОНАТ-КОНТЕНТ */
+        .donate-title {
+            font-size: 2.8rem;
+            font-weight: 700;
+            text-align: center;
+            background: linear-gradient(135deg, #ffd700, #ff8c00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+        .donate-sub {
+            text-align: center;
+            color: #9aaab8;
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+        }
+
+        .donate-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+        .donate-card {
+            background: rgba(255, 215, 0, 0.02);
+            padding: 28px 16px;
+            border-radius: 40px;
+            border: 1px solid rgba(255, 215, 0, 0.06);
+            text-align: center;
+            transition: 0.25s;
+            cursor: pointer;
+        }
+        .donate-card:hover {
+            background: rgba(255, 215, 0, 0.06);
+            border-color: rgba(255, 215, 0, 0.25);
+            transform: translateY(-8px);
+            box-shadow: 0 0 40px rgba(255, 215, 0, 0.05);
+          }
+        .donate-card .amount {
+            font-size: 2.6rem;
+            font-weight: 800;
+            color: #ffffff;
+        }
+        .donate-card .label {
+            font-size: 1rem;
+            color: #b0c0d0;
+            margin: 8px 0 16px;
+        }
+        .donate-card .btn-donate {
+            background: transparent;
+            border: 1px solid #ffd700;
+            color: #ffd700;
+            padding: 10px 28px;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: 0.2s;
+            cursor: pointer;
+            background: rgba(255, 215, 0, 0.02);
+        }
+        .donate-card .btn-donate:hover {
+            background: #ffd700;
+            color: #07080e;
+            box-shadow: 0 0 30px #ffd700;
+        }
+
+        /* СВОЯ СУММА */
+        .custom-donate {
+            background: rgba(255, 215, 0, 0.02);
+            padding: 32px 24px;
+            border-radius: 48px;
+            border: 1px solid rgba(255, 215, 0, 0.06);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 16px;
+            margin-top: 10px;
+        }
+        .custom-donate label {
+            font-size: 1.1rem;
+            color: #b0c0d0;
+        }
+        .custom-donate input {
+            background: #13171f;
+            border: 1px solid #2a3340;
+            padding: 14px 24px;
+            border-radius: 60px;
+            color: #fff;
+            font-size: 1.1rem;
+            width: 200px;
+            text-align: center;
+        }
+        .custom-donate input::placeholder {
+            color: #5a6a7a;
+        }
+        .custom-donate .btn-custom {
+            background: #ffd700;
+            border: none;
+            padding: 14px 44px;
+            border-radius: 60px;
+            font-weight: 700;
+            color: #07080e;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .custom-donate .btn-custom:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 40px #ffd700;
+        }
+
+        .donate-footer {
+            margin-top: 40px;
+            text-align: center;
+            color: #5a6a7a;
+            font-size: 0.95rem;
+        }
+
+        .footer {
+            margin-top: 40px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            color: #4a5a6a;
+            font-size: 0.85rem;
+        }
+        .footer a {
+            color: #4a5a6a;
+            text-decoration: none;
+            margin-left: 18px;
+        }
+        .footer a:hover {
+            color: #ffd700;
+        }
+
+        max-width: 600px {
+            .site { padding: 28px 18px; }
+            .donate-title { font-size: 2rem; }
+            .custom-donate { flex-direction: column; }
+            .custom-donate input { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="grid-bg"></div>
+
+    <div class="site">
+        <!-- Шапка -->
+        <header class="header">
+            <div class="logo">
+                <span class="logo-icon">⬡</span>
+                <h1>SPLIX RUSSIA</h1>
+            </div>
+            <a href="index.html" class="back-link">← На главную</a>
+        </header>
+
+        <!-- Заголовок -->
+        <h2 class="donate-title">💎 ДОНАТ</h2>
+        <p class="donate-sub">Поддержи развитие игры — получи эксклюзивные бонусы</p>
+
+        <!-- Карточки доната -->
+        <div class="donate-grid">
+            <div class="donate-card">
+                <div class="amount">250 ₽</div>
+                <div class="label">Набор "Боец"</div>
+                <button class="btn-donate" data-amount="250">Выбрать</button>
+            </div>
+            <div class="donate-card">
+                <div class="amount">750 ₽</div>
+                <div class="label">Набор "Кибер"</div>
+                <button class="btn-donate" data-amount="750">Выбрать</button>
+            </div>
+            <div class="donate-card">
+                <div class="amount">2000 ₽</div>
+                <div class="label">Набор "Легенда"</div>
+                <button class="btn-donate" data-amount="2000">Выбрать</button>
+            </div>
+            <div class="donate-card">
+                <div class="amount">5000 ₽</div>
+                <div class="label">Набор "Создатель"</div>
+                <button class="btn-donate" data-amount="5000">Выбрать</button>
+            </div>
+        </div>
+
+        <!-- Своя сумма -->
+        <div class="custom-donate">
+            <label for="customAmount">💰 Своя сумма:</label>
+            <input type="number" id="customAmount" placeholder="Например, 1230" min="1" />
+            <button class="btn-custom" id="customDonateBtn">Поддержать</button>
+        </div>
+
+        <div class="donate-footer">
+            Все средства идут на серверное оборудование и новый контент. Спасибо!
+        </div>
+
+        <!-- Футер -->
+        <div class="footer">
+            <span>© 2026 SPLIX RUSSIA</span>
+            <span>
+                <a href="#">Политика</a>
+                <a href="#">Discord</a>
+            </span>
+        </div>
+    </div>
+
+    <script>
+        // ПРЕСЕТЫ ДОНАТА
+        document.querySelectorAll('.btn-donate').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const amount = this.getAttribute('data-amount');
+                const card = this.closest('.donate-card');
+                const label = card ? card.querySelector('.label')?.innerText || 'набор' : 'набор';
+                alert(`💎 Вы выбрали донат ${amount} ₽ (${label}).\nПеренаправление на оплату... (демо)`);
+                // window.location.href = `https://pay.splix.ru/?amount=${amount}&desc=${encodeURIComponent(label)}`;
+            });
+        });
+
+        // СВОЯ СУММА
+        const customBtn = document.getElementById('customDonateBtn');
+        const customInput = document.getElementById('customAmount');
+        customBtn.addEventListener('click', function() {
+            const val = customInput.value.trim();
+            if (!val || isNaN(val) || Number(val) <= 0) {
+                alert('Введите корректную сумму (число больше 0)');
+                return;
+            }
+            const amount = Number(val);
+            alert(`💎 Спасибо за поддержку на ${amount} ₽!\nПереход на оплату... (демо)`);
+            // window.location.href = `https://pay.splix.ru/?amount=${amount}&desc=Пользовательская%20сумма`;
+        });
+    </script>
+
+</body>
+</html>
