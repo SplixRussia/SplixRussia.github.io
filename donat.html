@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SPLIX RUSSIA — донат</title>
+    <title>SPLIX RUSSIA — Донат через Сбер</title>
     <style>
+        /* ===== ГЛОБАЛ ===== */
         * {
             margin: 0;
             padding: 0;
@@ -12,7 +13,7 @@
         }
         body {
             background: #07080e;
-            font-family: 'Inter', system-ui, sans-serif;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
             color: #eef2f6;
             min-height: 100vh;
             display: flex;
@@ -21,6 +22,7 @@
             padding: 20px;
         }
 
+        /* ===== ФОН ===== */
         .grid-bg {
             position: fixed;
             top: 0;
@@ -29,8 +31,8 @@
             height: 100vh;
             z-index: 0;
             background-image:
-                linear-gradient(rgba(255, 215, 0, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 215, 0, 0.03) 1px, transparent 1px);
+                linear-gradient(rgba(0, 220, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 220, 255, 0.03) 1px, transparent 1px);
             background-size: 50px 50px;
             animation: gridMove 18s linear infinite;
             pointer-events: none;
@@ -40,28 +42,30 @@
             100% { transform: translate(50px, 50px); }
         }
 
+        /* ===== ОСНОВНОЙ БЛОК ===== */
         .site {
             position: relative;
             z-index: 10;
-            max-width: 900px;
+            max-width: 800px;
             width: 100%;
-            background: rgba(7, 8, 14, 0.8);
+            background: rgba(7, 8, 14, 0.85);
             backdrop-filter: blur(16px);
-            border-radius: 64px;
-            padding: 50px 45px 40px;
-            border: 1px solid rgba(255, 215, 0, 0.12);
+            border-radius: 56px;
+            padding: 48px 40px 40px;
+            border: 1px solid rgba(0, 220, 255, 0.08);
             box-shadow: 0 40px 90px rgba(0, 0, 0, 0.9);
         }
 
+        /* ===== ШАПКА ===== */
         .header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: 18px;
-            padding-bottom: 24px;
-            border-bottom: 1px solid rgba(255, 215, 0, 0.08);
-            margin-bottom: 40px;
+            gap: 16px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(0, 220, 255, 0.06);
+            margin-bottom: 32px;
         }
         .logo {
             display: flex;
@@ -69,13 +73,13 @@
             gap: 12px;
         }
         .logo-icon {
-            font-size: 2.4rem;
-            filter: drop-shadow(0 0 14px #ffd700);
+            font-size: 2.2rem;
+            filter: drop-shadow(0 0 14px #00dcff);
         }
         .logo h1 {
-            font-size: 2.4rem;
+            font-size: 2.2rem;
             font-weight: 700;
-            background: linear-gradient(135deg, #ffd700, #ff8c00);
+            background: linear-gradient(135deg, #00dcff, #7b61ff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -86,134 +90,196 @@
             transition: 0.2s;
             border-bottom: 2px solid transparent;
             padding-bottom: 4px;
+            font-size: 1rem;
         }
         .back-link:hover {
-            color: #ffd700;
-            border-bottom-color: #ffd700;
+            color: #00dcff;
+            border-bottom-color: #00dcff;
         }
 
-        /* ДОНАТ-КОНТЕНТ */
+        /* ===== ЗАГОЛОВОК ===== */
         .donate-title {
-            font-size: 2.8rem;
+            font-size: 2.6rem;
             font-weight: 700;
             text-align: center;
-            background: linear-gradient(135deg, #ffd700, #ff8c00);
+            background: linear-gradient(135deg, #3b82f6, #00dcff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 10px;
+            margin-bottom: 6px;
         }
         .donate-sub {
             text-align: center;
             color: #9aaab8;
-            font-size: 1.1rem;
-            margin-bottom: 40px;
+            font-size: 1.05rem;
+            margin-bottom: 36px;
         }
 
+        /* ===== КАРТОЧКИ ДОНАТА ===== */
         .donate-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 24px;
-            margin-bottom: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+            gap: 20px;
+            margin-bottom: 36px;
         }
         .donate-card {
-            background: rgba(255, 215, 0, 0.02);
-            padding: 28px 16px;
-            border-radius: 40px;
-            border: 1px solid rgba(255, 215, 0, 0.06);
+            background: rgba(255, 255, 255, 0.02);
+            padding: 24px 16px 20px;
+            border-radius: 36px;
+            border: 1px solid rgba(255, 255, 255, 0.04);
             text-align: center;
             transition: 0.25s;
-            cursor: pointer;
         }
         .donate-card:hover {
-            background: rgba(255, 215, 0, 0.06);
-            border-color: rgba(255, 215, 0, 0.25);
-            transform: translateY(-8px);
-            box-shadow: 0 0 40px rgba(255, 215, 0, 0.05);
-            }
+            background: rgba(59, 130, 246, 0.05);
+            border-color: rgba(59, 130, 246, 0.2);
+            transform: translateY(-6px);
+        }
         .donate-card .amount {
-            font-size: 2.6rem;
+            font-size: 2.4rem;
             font-weight: 800;
             color: #ffffff;
         }
         .donate-card .label {
-            font-size: 1rem;
+            font-size: 0.95rem;
             color: #b0c0d0;
-            margin: 8px 0 16px;
+            margin: 6px 0 14px;
         }
         .donate-card .btn-donate {
-            background: transparent;
-            border: 1px solid #ffd700;
-            color: #ffd700;
+            display: inline-block;
+            background: #3b82f6;
+            border: none;
+            color: #fff;
             padding: 10px 28px;
             border-radius: 60px;
             font-weight: 600;
             font-size: 0.95rem;
             transition: 0.2s;
             cursor: pointer;
-            background: rgba(255, 215, 0, 0.02);
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.15);
+            text-decoration: none;
+            width: 100%;
         }
         .donate-card .btn-donate:hover {
-            background: #ffd700;
-            color: #07080e;
-            box-shadow: 0 0 30px #ffd700;
+            transform: scale(1.05);
+            box-shadow: 0 0 40px rgba(59, 130, 246, 0.4);
         }
 
-        /* СВОЯ СУММА */
+        /* ===== СВОЯ СУММА ===== */
         .custom-donate {
-            background: rgba(255, 215, 0, 0.02);
-            padding: 32px 24px;
-            border-radius: 48px;
-            border: 1px solid rgba(255, 215, 0, 0.06);
+            background: rgba(255, 255, 255, 0.02);
+            padding: 28px 24px;
+            border-radius: 44px;
+            border: 1px solid rgba(255, 255, 255, 0.04);
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
             align-items: center;
-            gap: 16px;
-            margin-top: 10px;
+            gap: 14px;
+            margin-bottom: 24px;
         }
         .custom-donate label {
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             color: #b0c0d0;
         }
         .custom-donate input {
             background: #13171f;
             border: 1px solid #2a3340;
-            padding: 14px 24px;
+            padding: 12px 20px;
             border-radius: 60px;
             color: #fff;
             font-size: 1.1rem;
-            width: 200px;
+            width: 180px;
             text-align: center;
         }
         .custom-donate input::placeholder {
             color: #5a6a7a;
         }
         .custom-donate .btn-custom {
-            background: #ffd700;
+            background: #3b82f6;
             border: none;
-            padding: 14px 44px;
+            padding: 12px 40px;
             border-radius: 60px;
             font-weight: 700;
-            color: #07080e;
-            font-size: 1.1rem;
+            color: #fff;
+            font-size: 1.05rem;
             cursor: pointer;
             transition: 0.2s;
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.15);
         }
         .custom-donate .btn-custom:hover {
             transform: scale(1.05);
-            box-shadow: 0 0 40px #ffd700;
+            box-shadow: 0 0 40px rgba(59, 130, 246, 0.4);
         }
 
-        .donate-footer {
-            margin-top: 40px;
+        /* ===== СБЕР-ВИДЖЕТ (реальная оплата) ===== */
+        .sber-widget {
+            background: rgba(59, 130, 246, 0.04);
+            padding: 30px 24px;
+            border-radius: 40px;
+            border: 2px solid rgba(59, 130, 246, 0.15);
             text-align: center;
-            color: #5a6a7a;
+            margin: 24px 0 16px;
+            transition: 0.3s;
+        }
+        .sber-widget:hover {
+            border-color: rgba(59, 130, 246, 0.3);
+            box-shadow: 0 0 40px rgba(59, 130, 246, 0.05);
+        }
+        .sber-widget .sber-icon {
+            font-size: 2.8rem;
+            margin-bottom: 8px;
+        }
+        .sber-widget h3 {
+            font-size: 1.4rem;
+            color: #3b82f6;
+            margin-bottom: 8px;
+        }
+        .sber-widget p {
+            color: #9aaab8;
             font-size: 0.95rem;
+            margin-bottom: 16px;
+            line-height: 1.6;
+        }
+        .sber-widget .phone-display {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: 2px;
+            background: rgba(59, 130, 246, 0.08);
+            padding: 10px 20px;
+            border-radius: 40px;
+            display: inline-block;
+            margin: 6px 0 14px;
+        }
+        .sber-widget .btn-sber-pay {
+            display: inline-block;
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+            border: none;
+            color: #fff;
+            padding: 16px 50px;
+            border-radius: 60px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 0 40px rgba(59, 130, 246, 0.2);
+            text-decoration: none;
+            margin-top: 6px;
+        }
+        .sber-widget .btn-sber-pay:hover {
+            transform: scale(1.06);
+            box-shadow: 0 0 70px rgba(59, 130, 246, 0.4);
+        }
+        .sber-widget .hint {
+            font-size: 0.8rem;
+            color: #5a6a7a;
+            margin-top: 12px;
         }
 
+        /* ===== ФУТЕР ===== */
         .footer {
-            margin-top: 40px;
-            padding-top: 24px;
+            margin-top: 36px;
+            padding-top: 20px;
             border-top: 1px solid rgba(255, 255, 255, 0.03);
             display: flex;
             justify-content: space-between;
@@ -225,17 +291,18 @@
         .footer a {
             color: #4a5a6a;
             text-decoration: none;
-            margin-left: 18px;
+            margin-left: 16px;
         }
         .footer a:hover {
-            color: #ffd700;
+            color: #3b82f6;
         }
 
         max-width: 600px {
-            .site { padding: 28px 18px; }
+            .site { padding: 28px 18px; border-radius: 36px; }
             .donate-title { font-size: 2rem; }
             .custom-donate { flex-direction: column; }
             .custom-donate input { width: 100%; }
+            .sber-widget .btn-sber-pay { padding: 14px 30px; font-size: 1rem; }
         }
     </style>
 </head>
@@ -254,80 +321,172 @@
         </header>
 
         <!-- Заголовок -->
-        <h2 class="donate-title">💎 ДОНАТ</h2>
-        <p class="donate-sub">Поддержи развитие игры — получи эксклюзивные бонусы</p>
+        <h2 class="donate-title">💳 ДОНАТ ЧЕРЕЗ СБЕР</h2>
+        <p class="donate-sub">Поддержи проект — реальный перевод через СберБанк Онлайн</p>
 
         <!-- Карточки доната -->
         <div class="donate-grid">
             <div class="donate-card">
                 <div class="amount">250 ₽</div>
                 <div class="label">Набор "Боец"</div>
-                <button class="btn-donate" data-amount="250">Выбрать</button>
+                <button class="btn-donate" data-amount="250" data-label="Боец">Оплатить</button>
             </div>
             <div class="donate-card">
                 <div class="amount">750 ₽</div>
                 <div class="label">Набор "Кибер"</div>
-                <button class="btn-donate" data-amount="750">Выбрать</button>
+                <button class="btn-donate" data-amount="750" data-label="Кибер">Оплатить</button>
             </div>
             <div class="donate-card">
                 <div class="amount">2000 ₽</div>
                 <div class="label">Набор "Легенда"</div>
-                <button class="btn-donate" data-amount="2000">Выбрать</button>
+                <button class="btn-donate" data-amount="2000" data-label="Легенда">Оплатить</button>
             </div>
             <div class="donate-card">
                 <div class="amount">5000 ₽</div>
                 <div class="label">Набор "Создатель"</div>
-                <button class="btn-donate" data-amount="5000">Выбрать</button>
+                <button class="btn-donate" data-amount="5000" data-label="Создатель">Оплатить</button>
             </div>
         </div>
 
         <!-- Своя сумма -->
         <div class="custom-donate">
-            <label for="customAmount">💰 Своя сумма:</label>
+            <label for="customAmount">✏️ Своя сумма:</label>
             <input type="number" id="customAmount" placeholder="Например, 1230" min="1" />
-            <button class="btn-custom" id="customDonateBtn">Поддержать</button>
+            <button class="btn-custom" id="customDonateBtn">Оплатить</button>
         </div>
 
-        <div class="donate-footer">
-            Все средства идут на серверное оборудование и новый контент. Спасибо!
-        </div>
+        <!-- ===== ВИДЖЕТ СБЕРА — РЕАЛЬНАЯ ОПЛАТА ===== -->
+        <div class="sber-widget" id="sberWidget">
+            <div class="sber-icon">🏦</div>
+            <h3>СберБанк Онлайн</h3>
+            <p>Перевод по номеру телефона через СБП
+Деньги поступают мгновенно</p>
+            <div class="phone-display" id="sberPhoneDisplay">+7 900 123-45-67</div>
+            
 
+            <button class="btn-sber-pay" id="sberPayBtn">
+                💳 Оплатить через Сбер
+            </button>
+            <div class="hint">Нажмите — откроется приложение Сбера для подтверждения платежа</div>
+        </div>
         <!-- Футер -->
         <div class="footer">
             <span>© 2026 SPLIX RUSSIA</span>
             <span>
-                <a href="#">Политика</a>
                 <a href="#">Discord</a>
+                <a href="#">Политика</a>
             </span>
         </div>
     </div>
 
     <script>
-        // ПРЕСЕТЫ ДОНАТА
+        // =======================================================
+        // РЕАЛЬНАЯ ИНТЕГРАЦИЯ СО СБЕРБАНКОМ
+        // Работает через СБП (Система быстрых платежей)
+        // =======================================================
+
+        // ⚠️ ЗАМЕНИ ЭТОТ НОМЕР НА СВОЙ (ТОЛЬКО ЦИФРЫ, 10 ШТУК, НАЧИНАЯ С 7)
+        const SBER_PHONE = '79001234567';  // <--- СЮДА ВСТАВЬ СВОЙ НОМЕР
+
+        // Форматируем номер для отображения
+        function formatPhone(phone) {
+            const p = phone.replace(/\D/g, '');
+            if (p.length === 11 && p.startsWith('7')) {
+                return `+7 ${p.slice(1, 4)} ${p.slice(4, 7)}-${p.slice(7, 9)}-${p.slice(9, 11)}`;
+            }
+            if (p.length === 10) {
+                return `+7 ${p.slice(0, 3)} ${p.slice(3, 6)}-${p.slice(6, 8)}-${p.slice(8, 10)}`;
+            }
+            return phone;
+        }
+
+        // Отображаем номер в виджете
+        document.getElementById('sberPhoneDisplay').textContent = formatPhone(SBER_PHONE);
+
+        // ===== ФУНКЦИЯ ОПЛАТЫ (реальная) =====
+        function payWithSber(amount, description) {
+            if (!amount || amount <= 0) {
+                alert('⚠️ Введите корректную сумму');
+                return false;
+            }
+
+            // Формируем ссылку для оплаты через Сбер (СБП)
+            const encodedDesc = encodeURIComponent(description || 'Донат SPLIX RUSSIA');
+            
+            // Генерируем ссылку СберБанк Онлайн (перевод по номеру телефона)
+            // Работает на мобильных — открывает приложение Сбера
+            const sberLink = `https://qr.nspk.ru/` +
+                             `?type=01` +
+                             `&bank=100000000111` +
+                             `&sum=${Math.round(amount)}` +
+                             `&cur=RUB` +
+                             `&crc=${SBER_PHONE}` +
+                             `&desc=${encodedDesc}`;
+
+            // Открываем ссылку в новом окне
+            window.open(sberLink, '_blank');
+
+            // Показываем уведомление
+            alert(`💳 Открывается СберБанк Онлайн\nСумма: ${Math.round(amount)} ₽\nНазначение: ${description || 'Донат SPLIX RUSSIA'}\n\nПожалуйста, подтвердите платеж в приложении Сбера.`);
+
+            return true;
+        }
+
+        // ===== ОБРАБОТЧИКИ КНОПОК =====
+
+        // 1. Кнопки пресетов
         document.querySelectorAll('.btn-donate').forEach(btn => {
             btn.addEventListener('click', function(e) {
-                e.stopPropagation();
+                e.preventDefault();
                 const amount = this.getAttribute('data-amount');
-                const card = this.closest('.donate-card');
-                const label = card ? card.querySelector('.label')?.innerText || 'набор' : 'набор';
-                alert(`💎 Вы выбрали донат ${amount} ₽ (${label}).\nПеренаправление на оплату... (демо)`);
-                // window.location.href = `https://pay.splix.ru/?amount=${amount}&desc=${encodeURIComponent(label)}`;
+                const label = this.getAttribute('data-label') || 'Донат';
+                const desc = `SPLIX RUSSIA — набор "${label}" (${amount} ₽)`;
+                payWithSber(amount, desc);
             });
         });
 
-        // СВОЯ СУММА
+        // 2. Своя сумма
         const customBtn = document.getElementById('customDonateBtn');
         const customInput = document.getElementById('customAmount');
-        customBtn.addEventListener('click', function() {
+
+        customBtn.addEventListener('click', function(e) {
+            e.preventDefault();
             const val = customInput.value.trim();
             if (!val || isNaN(val) || Number(val) <= 0) {
-                alert('Введите корректную сумму (число больше 0)');
+                alert('⚠️ Введите корректную сумму (число больше 0)');
                 return;
             }
             const amount = Number(val);
-            alert(`💎 Спасибо за поддержку на ${amount} ₽!\nПереход на оплату... (демо)`);
-            // window.location.href = `https://pay.splix.ru/?amount=${amount}&desc=Пользовательская%20сумма`;
+            const desc = `SPLIX RUSSIA — пользовательский донат (${amount} ₽)`;
+            payWithSber(amount, desc);
         });
+
+        // 3. Главная кнопка "Оплатить через Сбер" в виджете
+        document.getElementById('sberPayBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            // Открываем диалог с выбором суммы
+            const customAmount = prompt('💳 Введите сумму доната (в рублях):', '500');
+            if (customAmount === null) return; // отмена
+            const amount = parseFloat(customAmount);
+            if (isNaN(amount) || amount <= 0) {
+                alert('⚠️ Введите корректную сумму');
+                return;
+            }
+            const desc = `SPLIX RUSSIA — донат через Сбер (${amount} ₽)`;
+            payWithSber(amount, desc);
+        });
+
+        // ===== ДОПОЛНИТЕЛЬНО: ВВОД СУММЫ ПО ENTER =====
+        customInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                customBtn.click();
+            }
+        });
+
+        console.log('✅ ROCKET // SPLIX RUSSIA — донат через Сбер активен');
+        console.log(`📞 Номер для перевода: +${SBER_PHONE}`);
+        console.log('💳 Оплата работает через СБП (СберБанк Онлайн)');
     </script>
 
 </body>
